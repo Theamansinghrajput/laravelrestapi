@@ -1,0 +1,854 @@
+openapi: 3.0.0
+info:
+  title: filari-api-v1.0.0
+  version: v1.0.0
+servers:
+  - url: http://{{host}}
+  - url: http://127.0.0.1:8000
+tags:
+  - name: version1.0.0
+paths:
+  /api/v1.0.0/demo:
+    post:
+      tags:
+        - version1.0.0
+      summary: orders-update/{order_id}
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: >-
+                    must be a integer value, this is a primary key for user
+                    account
+                  example: '5'
+                api_acces_token:
+                  type: string
+                  description: >-
+                    admin provided api key - must be a string wiith min and max
+                    length is 32
+                  example: OQZ2K2uvOQZ2K2uvNJ3rBDFukn3BlcOp
+                user_login_token:
+                  type: string
+                  description: must be a string wiith min and max length is 32 char.
+                  example: itiLwVSYZsIQINdkqe6kq8WndpseEMHJ
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1.0.0/orders:
+    post:
+      tags:
+        - version1.0.0
+      summary: Order create
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: >-
+                    must be a integer value, this is a primary key for user
+                    account
+                  example: '5'
+                api_acces_token:
+                  type: string
+                  description: >-
+                    admin provided api key - must be a string wiith min and max
+                    length is 32
+                  example: OQZ2K2uvOQZ2K2uvNJ3rBDFukn3BlcOp
+                user_login_token:
+                  type: string
+                  description: must be a string wiith min and max length is 32 char.
+                  example: itiLwVSYZsIQINdkqe6kq8WndpseEMHJ
+                order_type:
+                  type: integer
+                  description: category of order
+                  example: '1'
+                Shipping_first_name:
+                  type: string
+                  description: >-
+                    shipping first name as string with min 3 char and max 50
+                    char
+                  example: Aman
+                Shipping_last_name:
+                  type: string
+                  description: shipping last name as string with min 3 char and max 50 char
+                  example: Singh
+                Shipping_name:
+                  type: string
+                  description: >-
+                    shipping company name as string with min 3 char and max 50
+                    char
+                  example: amandy labs
+                Shipping_mobile:
+                  type: integer
+                  description: |
+                    contact mobile no of shipment
+                  example: '1597539517'
+                Shipping_address:
+                  type: string
+                  description: |
+                    address of ship ment max 500 chars
+                  example: 145 kanp
+                Shipping_address_optional:
+                  type: string
+                  description: optional part of address 500 chars
+                  example: 145 kanp
+                Shipping_type:
+                  type: integer
+                  description: type of shippment like addres is office or home
+                  example: '1'
+                Shipping_is_same:
+                  type: integer
+                  description: >-
+                    does billing address is same as shipment if yes pass value 1
+                    otherwise pass value 0
+                  example: '0'
+                Shipping_city_id:
+                  type: integer
+                  description: city id
+                  example: '15'
+                Shipping_state_id:
+                  type: integer
+                  description: state id
+                  example: '20'
+                Shipping_pincode_id:
+                  type: integer
+                  description: pincode id
+                  example: '15482'
+                billing_first_name:
+                  type: string
+                  description: billing first name as string with min 3 char and max 50 char
+                  example: Aman
+                billing_last_name:
+                  type: string
+                  description: billing  last name as string with min 3 char and max 50 char
+                  example: Singh
+                billing_name:
+                  type: string
+                  description: >-
+                    billing  companyname as string with min 3 char and max 50
+                    char
+                  example: amandy labs
+                billing_mobile:
+                  type: integer
+                  description: billing mobile no
+                  example: '1597539517'
+                billing_address:
+                  type: string
+                  description: billing required addess as string max 500 char
+                  example: 145 kanp
+                billing_gst_details:
+                  type: string
+                  description: billing gst address.
+                  example: 5429654785as454
+                billing_address_optional:
+                  type: string
+                  description: billing required addess as string max 500 char
+                  example: 145 kanp
+                billing_city_id:
+                  type: integer
+                  description: city id
+                  example: '15'
+                billing_state_id:
+                  type: integer
+                  description: state id
+                  example: '20'
+                billing_pincode_id:
+                  type: integer
+                  description: pincode id
+                  example: '15482'
+                weight:
+                  type: integer
+                  description: weight of shipment
+                  example: '12'
+                length:
+                  type: integer
+                  description: length of shipment
+                  example: '150'
+                width:
+                  type: integer
+                  description: width of shipment
+                  example: '50'
+                height:
+                  type: integer
+                  description: height of shipment
+                  example: '12'
+                name:
+                  type: string
+                  description: name of product
+                  example: lunch box
+                quantity:
+                  type: integer
+                  description: quantity of product
+                  example: '1'
+                amount:
+                  type: integer
+                  description: amount of product
+                  example: '12'
+                sku:
+                  type: integer
+                  description: 'sku optional '
+                  example: '0'
+                shiping_charges:
+                  type: integer
+                  description: shipping charges of consignment
+                  example: '90'
+                COD_charges:
+                  type: integer
+                  description: COD charges of consignment
+                  example: '12'
+                tax_amount:
+                  type: integer
+                  description: TAX charges of consignment
+                  example: '15'
+                discount:
+                  type: integer
+                  description: Discountcharges of consignment
+                  example: '0'
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1.0.0/orders-listing:
+    post:
+      tags:
+        - version1.0.0
+      summary: orders-listing
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: >-
+                    must be a integer value, this is a primary key for user
+                    account
+                  example: '5'
+                api_acces_token:
+                  type: string
+                  description: >-
+                    admin provided api key - must be a string wiith min and max
+                    length is 32
+                  example: OQZ2K2uvOQZ2K2uvNJ3rBDFukn3BlcOp
+                user_login_token:
+                  type: string
+                  description: must be a string wiith min and max length is 32 char.
+                  example: itiLwVSYZsIQINdkqe6kq8WndpseEMHJ
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1.0.0/account-info-change:
+    post:
+      tags:
+        - version1.0.0
+      summary: account information modification Copy
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: must be string with min 3 char and max 100
+                  example: Mukesh
+                last_name:
+                  type: string
+                  description: must be string with min 3 char and max 100
+                  example: ji
+                email:
+                  type: string
+                  description: must be string with min 6 char and max 100
+                  example: mujkesji@amandy.in
+                mobile_integer:
+                  type: integer
+                  description: must be a integer wiith min and max length is 10
+                  example: '1456321457'
+                passowrd:
+                  type: integer
+                  description: must be string with min length 6 and max length 18
+                  example: '123456'
+                shipping_qunatity:
+                  type: string
+                  description: must be string with xx - xxxx format
+                  example: 1 - 1000
+                name:
+                  type: string
+                  description: must be string with min 10 char and max 100
+                  example: filari agency LLP
+                user_consent:
+                  type: string
+                  description: must be a string as content yes
+                  example: 'yes'
+                api_acces_token:
+                  type: string
+                  description: >-
+                    admin provided api key - must be a string wiith min and max
+                    length is 32
+                  example: OQZ2K2uvOQZ2K2uvNJ3rBDFukn3Blc
+                user_login_token:
+                  type: string
+                  description: must be a string wiith min and max length is 32 char
+                  example: itiLwVSYZsIQINdkqe6kq8WndpseEMHJ
+                user_id:
+                  type: integer
+                  description: >-
+                    must be a integer value, this is a primary key for user
+                    account
+                  example: '5'
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1.0.0/login:
+    post:
+      tags:
+        - version1.0.0
+      summary: social log in
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                user_login:
+                  type: string
+                  description: must be string with min 3 char and max 100
+                  example: swatig@amandy.in
+                password:
+                  type: integer
+                  description: must be string with min 6 char and max 18
+                  example: '123456'
+                user_consent:
+                  type: string
+                  description: must be a string as content yes
+                  example: 'yes'
+                api_acces_token:
+                  type: string
+                  description: >-
+                    admin provided api key - must be a string wiith min and max
+                    length is 32
+                  example: OQZ2K2uvOQZ2K2uvNJ3rBDFukn3BlcOp
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1.0.0/account-info:
+    post:
+      tags:
+        - version1.0.0
+      summary: account info
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: >-
+                    must be a integer value, this is a primary key for user
+                    account
+                  example: '5'
+                api_acces_token:
+                  type: string
+                  description: >-
+                    admin provided api key - must be a string wiith min and max
+                    length is 32
+                  example: OQZ2K2uvOQZ2K2uvNJ3rBDFukn3BlcOp
+                user_login_token:
+                  type: string
+                  description: must be a string wiith min and max length is 32 char.
+                  example: itiLwVSYZsIQINdkqe6kq8WndpseEMHJ
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1.0.0/user-logout:
+    post:
+      tags:
+        - version1.0.0
+      summary: account logout
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: must be a integer value.
+                  example: '5'
+                api_acces_token:
+                  type: string
+                  description: >-
+                    admin provided api key - must be a string wiith min and max
+                    length is 32
+                  example: OQZ2K2uvOQZ2K2uvNJ3rBDFukn3BlcOp
+                user_login_token:
+                  type: string
+                  description: must be a string wiith min and max length is 32 char
+                  example: itiLwVSYZsIQINdkqe6kq8WndpseEMHJ
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1.0.0/status-codes/0:
+    post:
+      tags:
+        - version1.0.0
+      summary: Api Status code update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                api_acces_token:
+                  type: string
+                  description: >-
+                    admin provided api key - must be a string wiith min and max
+                    length is 32
+                  example: OQZ2K2uvOQZ2K2uvNJ3rBDFukn3BlcOp
+                CodeMessage:
+                  type: string
+                  description: enter error code you want to shoe like 404
+                  example: Page Not Found
+                Message:
+                  type: string
+                  description: >-
+                    enter error message you want to shoe like : password in
+                    inncorect
+                  example: Requested page not found. Please try with correct page url.
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: number
+                example: 127.0.0.1:8000
+            Date:
+              schema:
+                type: string
+                example: Mon, 20 Jun 2022 11:42:20 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.1.6
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '57'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: Api Status code update
+                  value:
+                    key: 0
+                    StatusCode: '404'
+                    CodeMessage: Page Not Found
+                    Message: >-
+                      Requested page not found. Please try with correct page
+                      url.
+                example-1:
+                  summary: error Api Status code update
+                  value:
+                    status:
+                      key: 1
+                      StatusCode: '401'
+                      CodeMessage: API key error.
+                      Message: API key validation failed, Please check you API key.
+                    requested_data:
+                      api_acces_token: OQZ2K2uvOQZ2K2uvNJ3rBDFukn3Bla
+                      CodeMessage: Page Not Found
+                      Message: >-
+                        Requested page not found. Please try with correct page
+                        url.
+                    output_data: null
+  /api/v1.0.0/status-codes/3:
+    get:
+      tags:
+        - version1.0.0
+      summary: api status codes
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: number
+                example: 127.0.0.1:8000
+            Date:
+              schema:
+                type: string
+                example: Mon, 20 Jun 2022 10:29:28 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.1.6
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                key: 3
+                StatusCode: '400'
+                CodeMessage: Bad request (something wrong with URL or parameters)
+                Message: Please use valid url or parameters with api.
+  /api/v1.0.0/forget-password:
+    post:
+      tags:
+        - version1.0.0
+      summary: forget
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                user_login:
+                  type: string
+                  description: must be string with min 3 char and max 100
+                  example: swatig@amandy.in
+                user_consent:
+                  type: string
+                  description: must be a string as content yes
+                  example: 'yes'
+                api_acces_token:
+                  type: string
+                  description: >-
+                    admin provided api key - must be a string wiith min and max
+                    length is 32
+                  example: OQZ2K2uvOQZ2K2uvNJ3rBDFukn3BlcOp
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1.0.0/signup:
+    post:
+      tags:
+        - version1.0.0
+      summary: create new account
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: must be string with min 3 char and max 50
+                  example: Aushtosh
+                last_name:
+                  type: string
+                  description: country code in digita like for India is 91
+                  example: ji
+                email_address:
+                  type: string
+                  description: must be a integer wiith min and max length is 10
+                  example: ushtosi@gmail.com
+                country_code:
+                  type: integer
+                  description: must be string with min length 6 and max length 18
+                  example: '91'
+                mobile_number:
+                  type: integer
+                  description: must be integer
+                  example: '1456987489'
+                passowrd:
+                  type: integer
+                  description: must be integer
+                  example: '123456'
+                min_shipping_qunatity:
+                  type: integer
+                  description: must be string with min 10 char and max 100
+                  example: '100'
+                max_shipping_qunatity:
+                  type: integer
+                  description: must be a string as content yes
+                  example: '10000'
+                company_name:
+                  type: string
+                  description: name of the company
+                  example: filari agency LLP
+                user_consent:
+                  type: string
+                  description: termers and conditional box or other user consent
+                  example: 'yes'
+                api_acces_token:
+                  type: string
+                  example: OQZ2K2uvOQZ2K2uvNJ3rBDFukn3BlcOp
+                category:
+                  type: integer
+                  example: '2'
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1.0.0/company-information-modification:
+    post:
+      tags:
+        - version1.0.0
+      summary: company information modification
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: must be string with min 3 char and max 100
+                  example: filari.agency
+                website_url:
+                  type: string
+                  description: >-
+                    must be a url like https://www.xxx.com with min 10 char and
+                    max 100
+                  example: https://filari.in
+                email:
+                  type: string
+                  description: must be string with min 10 char and max 100
+                  example: mujkesji@amandy.in
+                mobile:
+                  type: integer
+                  description: must be a integer wiith min and max length is 10
+                  example: '1456321457'
+                PancardNumber:
+                  type: string
+                  description: must be string with min length 10 and max length 10
+                  example: ABCDG2760D
+                GstNumber:
+                  type: string
+                  description: must be string with min length 15 and max length 15
+                  example: AVVVCK125479652
+                address:
+                  type: string
+                  description: must be string with min length 10 and max length 500
+                  example: new delhi
+                city_id:
+                  type: integer
+                  description: must be string with min length 10 and max length 30
+                  example: '1'
+                state_id:
+                  type: integer
+                  description: must be string with min length 10 and max length 30
+                  example: '1'
+                pincode_id:
+                  type: integer
+                  description: must be a integer wiith min and max length is 6
+                  example: '1'
+                logo_attachment:
+                  type: string
+                  description: must be a jpeg,png,jpg,pdf file with less than 3MB
+                  format: binary
+                gst_attachment:
+                  type: string
+                  description: must be a jpeg,png,jpg,pdf file with less than 3MB
+                  format: binary
+                authorised_signature_attachment:
+                  type: string
+                  description: must be a jpeg,png,jpg,pdf file with less than 3MB
+                  format: binary
+                user_id:
+                  type: integer
+                  description: >-
+                    must be a integer value, this is a primary key for user
+                    account
+                  example: '5'
+                api_acces_token:
+                  type: string
+                  description: >-
+                    admin provided api key - must be a string wiith min and max
+                    length is 32
+                  example: OQZ2K2uvOQZ2K2uvNJ3rBDFukn3BlcOp
+                user_login_token:
+                  type: string
+                  description: must be a string wiith min and max length is 32 char
+                  example: itiLwVSYZsIQINdkqe6kq8WndpseEMHJ
+                category:
+                  type: integer
+                  description: must be a integer value according to company category
+                  example: '4'
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1.0.0/kyc-information:
+    post:
+      tags:
+        - version1.0.0
+      summary: user kyc information
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: >-
+                    must be a integer value, this is a primary key for user
+                    account
+                  example: '5'
+                api_acces_token:
+                  type: string
+                  description: >-
+                    admin provided api key - must be a string wiith min and max
+                    length is 32 char
+                  example: OQZ2K2uvOQZ2K2uvNJ3rBDFukn3BlcOp
+                user_login_token:
+                  type: string
+                  description: must be a string wiith min and max length is 32 char
+                  example: itiLwVSYZsIQINdkqe6kq8WndpseEMHJ
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
